@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+		<h1>Update User</h1>
+		<!-- Include menu.html -->
+      <th:block th:include="/menu"></th:block>
+      <div class="container">
+      		<h1>Register User</h1>
+      		<form action="#" th:action="@{/register}" th:object="${user}" method="POST">
+      			<!-- hidden form field to update  -->
+      			<input type="hidden" th:field="*{id}"/>
+      			<input type="text" th:field="*{username}" class="form-control mb-4 col-4"/>
+      			<input type="password" th:field="*{password}" class="form-control mb-4 col-4"/>
+      			<input type="text" th:field="*{fullname}" class="form-control mb-4 col-4"/>
+      			<input type="text" th:field="*{email}" class="form-control mb-4 col-4"/>
+      			<select th:field="*{gender}" name="gender" class="form-control" autofocus="autofocus">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+				</select>
+      			<!-- <input type="text" th:field="*{user_role}"  class="form-control mb-4 col-4"/> -->
+      			<button type="submit" class="btn btn-info col-2">Save</button>
+      		</form>
+      		<a th:href="@{/}">Back to previous page</a>
+      </div>
+</body>
+</html>

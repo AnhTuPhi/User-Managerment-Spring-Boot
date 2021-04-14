@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Form</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<!-- Include menu.html -->
+	<th:block th:include="/menu"></th:block>
+
+	<div id="login-form-wrapped">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-2 col-xs-1"></div>
+				<div class="col-lg-8 col-xs-10">
+					<h1>Login Form</h1>
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid Username or Password. Please insert again!</div>
+					</div>
+					<form action="#" th:action="@{/login}"  method="POST">
+						<div class="form-group">
+							<input type="text" placeholder="Enter username account" id="username" name="username"
+								class="form-control" autofocus="autofocus" />
+						</div>
+						<div class="form-group">
+							<input type="password" id="password" name="password"
+								placeholder="Password" class="form-control" autofocus="autofocus" />
+						</div>
+						<div class="form-group">
+							<button type="submit" name="login-submit" id="login-submit"
+								class="form-control btn btn-primary" value="Log In">Login</button>
+							<a th:href="@{/register}">New here? Click to register!</a>
+							<a th:href="@{/}">Back to previous page</a>
+						</div>
+					</form>
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You've just logged out!</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-xs-1"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
